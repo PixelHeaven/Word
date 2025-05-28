@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASKR/ASKANSZ Format Converter</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .converter-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .upload-area {
+            border: 2px dashed #bdc3c7;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            margin: 20px 0;
+            transition: border-color 0.3s;
+        }
+        .upload-area:hover {
+            border-color: #3498db;
+        }
+        .file-info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .conversion-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .option-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .option-card:hover {
+            background: #e9ecef;
+        }
+        .preview-area {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="menu-bar">
+            <div class="menu-item" onclick="window.location.href='index.html'">← Back to Editor</div>
+            <div class="menu-item">ASKR/ASKANSZ Converter</div>
+        </div>
+
+        <div class="converter-container">
+            <h1>ASKR/ASKANSZ Format Converter</h1>
+            <p>Convert your ASKR/ASKANSZ files to other formats or import from various formats.</p>
+
+            <div class="upload-area" onclick="document.getElementById('converterFileInput').click()">
+                <h3>📁 Select File to Convert</h3>
+                <p>Click here or drag and drop your file</p>
+                <p><small>Supported: .askr, .askansz, .txt, .html, .docx (limited), .pdf (text only)</small></p>
+            </div>
+
+            <input type="file" id="converterFileInput" accept=".askr,.askansz,.txt,.html,.docx,.pdf" style="display: none;">
+
+            <div id="fileInfo" class="file-info" style="display: none;">
+                <h4>File Information</h4>
+                <div id="fileDetails"></div>
+            </div>
+
+            <div id="conversionOptions" class="conversion-options" style="display: none;">
+                <div class="option-card" onclick="convertTo('askr')">
+                    <h4>📄 ASKR Format</h4>
+                    <p>Native format with full metadata</p>
+                </div>
+                <div class="option-card" onclick="convertTo('askansz')">
+                    <h4>📄 ASKANSZ Format</h4>
+                    <p>Alternative native format</p>
+                </div>
+                <div class="option-card" onclick="convertTo('pdf')">
+                    <h4>📕 PDF</h4>
+                    <p>Portable Document Format</p>
+                </div>
+                <div class="option-card" onclick="convertTo('docx')">
+                    <h4>📘 DOCX</h4>
+                    <p>Microsoft Word format</p>
+                </div>
+                <div class="option-card" onclick="convertTo('txt')">
+                    <h4>📝 Plain Text</h4>
+                    <p>Simple text format</p>
+                </div>
+                <div class="option-card" onclick="convertTo('html')">
+                    <h4>🌐 HTML</h4>
+                    <p>Web page format</p>
+                </div>
+            </div>
+
+            <div id="previewArea" class="preview-area" style="display: none;">
+                <h4>Preview</h4>
+                <div id="previewContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="converter.js"></script>
+</body>
+</html>
