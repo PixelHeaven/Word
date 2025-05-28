@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASKR Word Processor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Menu Bar -->
+        <div class="menu-bar">
+            <div class="menu-item" onclick="newDocument()">New</div>
+            <div class="menu-item" onclick="openDocument()">Open</div>
+            <div class="menu-item" onclick="saveDocument()">Save</div>
+            <div class="menu-item" onclick="printDocument()">Print</div>
+            <div class="menu-item" onclick="openConverter()">Converter</div>
+        </div>
+
+        <!-- Toolbar -->
+        <div class="toolbar">
+            <select id="fontFamily" onchange="changeFontFamily()">
+                <option value="Arial">Arial</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Helvetica">Helvetica</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Verdana">Verdana</option>
+            </select>
+
+            <select id="fontSize" onchange="changeFontSize()">
+                <option value="12">12</option>
+                <option value="14">14</option>
+                <option value="16">16</option>
+                <option value="18">18</option>
+                <option value="20">20</option>
+                <option value="24">24</option>
+                <option value="28">28</option>
+                <option value="32">32</option>
+            </select>
+
+            <button onclick="formatText('bold')" class="format-btn" id="boldBtn">B</button>
+            <button onclick="formatText('italic')" class="format-btn" id="italicBtn">I</button>
+            <button onclick="formatText('underline')" class="format-btn" id="underlineBtn">U</button>
+
+            <div class="separator"></div>
+
+            <button onclick="alignText('left')" class="format-btn">⬅</button>
+            <button onclick="alignText('center')" class="format-btn">⬌</button>
+            <button onclick="alignText('right')" class="format-btn">➡</button>
+            <button onclick="alignText('justify')" class="format-btn">⬍</button>
+
+            <div class="separator"></div>
+
+            <button onclick="insertList('ul')" class="format-btn">• List</button>
+            <button onclick="insertList('ol')" class="format-btn">1. List</button>
+
+            <div class="separator"></div>
+
+            <input type="color" id="textColor" onchange="changeTextColor()" title="Text Color">
+            <input type="color" id="bgColor" onchange="changeBackgroundColor()" title="Background Color">
+        </div>
+
+        <!-- Document Area -->
+        <div class="document-container">
+            <div class="document" id="document" contenteditable="true" spellcheck="true">
+                <p>Start typing your document here...</p>
+            </div>
+        </div>
+
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <span id="wordCount">Words: 0</span>
+            <span id="charCount">Characters: 0</span>
+            <span>Format: ASKR/ASKANSZ Ready</span>
+        </div>
+    </div>
+
+    <input type="file" id="fileInput" accept=".txt,.html,.askr,.askansz" style="display: none;">
+    <script src="script.js"></script>
+</body>
+</html>
